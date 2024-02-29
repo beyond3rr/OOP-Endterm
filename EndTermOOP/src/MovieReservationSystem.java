@@ -41,8 +41,6 @@ abstract class User extends DatabaseEntity {
     public void commonMethod1() {
         System.out.println("Cringe");
     }
-
-
 }
 
 class Customer extends User {
@@ -54,8 +52,6 @@ class Customer extends User {
     public void specificMethod() {
         System.out.println("I am CUSTOMER");
     }
-
-
 }
 
 class Admin extends User {
@@ -67,8 +63,6 @@ class Admin extends User {
     public void specificMethod() {
         System.out.println("I Am ADMIN!");
     }
-
-
 }
 
 class Movie extends DatabaseEntity {
@@ -82,7 +76,24 @@ class Movie extends DatabaseEntity {
         this.prices = prices;
     }
 
+    public static void createMovieTable() {
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS movies4 (" +
+                "id SERIAL PRIMARY KEY," +
+                "movie_name VARCHAR(255) NOT NULL," +
+                "show_time1 TIME," +
+                "show_time2 TIME," +
+                "show_time3 TIME," +
+                "show_time4 TIME," +
+                "show_time5 TIME" +
+                ")";
 
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(createTableSQL);
+            System.out.println("Movie table created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 class Reservation extends DatabaseEntity {
@@ -106,6 +117,7 @@ public class MovieReservationSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         DatabaseEntity.initialize();
+        Movie.createMovieTable(); // Call this method to create the movie table.
 
         while (true) {
             System.out.println("\nMovie Reservation System:");
