@@ -55,7 +55,7 @@ class Customer extends User {
         System.out.println("I am CUSTOMER");
     }
 
- 
+
 }
 
 class Admin extends User {
@@ -150,7 +150,7 @@ public class MovieReservationSystem {
             currentUser = username;
             System.out.println("Login successful. Welcome, " + currentUser + "!");
         } else {
-            System.out.println("Invalid username or password. Please try again.");
+            System.out.println("Invalid username or password.");
         }
     }
 
@@ -167,7 +167,7 @@ public class MovieReservationSystem {
         if (insertUser(username, password)) {
             System.out.println("Registration successful. Please log in.");
         } else {
-            System.out.println("Registration failed. Please try again with a different username.");
+            System.out.println("Registration failed.");
         }
     }
 
