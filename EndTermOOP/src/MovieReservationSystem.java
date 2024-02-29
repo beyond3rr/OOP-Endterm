@@ -39,10 +39,10 @@ abstract class User extends DatabaseEntity {
     public abstract void specificMethod();
 
     public void commonMethod1() {
+        System.out.println("Cringe");
     }
 
-    public void commonMethod2() {
-    }
+
 }
 
 class Customer extends User {
@@ -52,10 +52,10 @@ class Customer extends User {
 
     @Override
     public void specificMethod() {
+        System.out.println("I am CUSTOMER");
     }
 
-    public void customerSpecificInit() {
-    }
+ 
 }
 
 class Admin extends User {
@@ -65,10 +65,10 @@ class Admin extends User {
 
     @Override
     public void specificMethod() {
+        System.out.println("I Am ADMIN!");
     }
 
-    public void adminSpecificInit() {
-    }
+
 }
 
 class Movie extends DatabaseEntity {
