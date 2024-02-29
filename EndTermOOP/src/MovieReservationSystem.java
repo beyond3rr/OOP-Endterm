@@ -38,7 +38,11 @@ abstract class User extends DatabaseEntity {
 
     public abstract void specificMethod();
 
+    public void commonMethod1() {
+    }
 
+    public void commonMethod2() {
+    }
 }
 
 class Customer extends User {
@@ -46,6 +50,12 @@ class Customer extends User {
         super(username, password);
     }
 
+    @Override
+    public void specificMethod() {
+    }
+
+    public void customerSpecificInit() {
+    }
 }
 
 class Admin extends User {
@@ -53,6 +63,12 @@ class Admin extends User {
         super(username, password);
     }
 
+    @Override
+    public void specificMethod() {
+    }
+
+    public void adminSpecificInit() {
+    }
 }
 
 class Movie extends DatabaseEntity {
@@ -66,6 +82,8 @@ class Movie extends DatabaseEntity {
         this.prices = prices;
     }
 
+
+}
 
 class Reservation extends DatabaseEntity {
     private String username;
@@ -97,7 +115,7 @@ public class MovieReservationSystem {
 
             System.out.print("Enter your choice (1-3): ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume the newline character
+            scanner.nextLine();
 
             if (choice == 1) {
                 loginUser();
@@ -252,7 +270,7 @@ public class MovieReservationSystem {
 
         System.out.println("Choose Show Time (1-5): ");
         int showTimeChoice = scanner.nextInt();
-        scanner.nextLine(); // consume the newline character
+        scanner.nextLine();
 
         String showTimeColumn = "show_time" + showTimeChoice;
 
@@ -304,16 +322,14 @@ public class MovieReservationSystem {
     }
 
     private static String convertShowTime(String showTimeColumn) {
-        // Add your logic here to convert show_timeColumn to the desired format (e.g., 19:20)
-        // For simplicity, let's assume show_timeColumn is in the format "show_timeX" where X is the show time index
         String[] showTimeParts = showTimeColumn.split("show_time");
         if (showTimeParts.length == 2) {
             int showTimeIndex = Integer.parseInt(showTimeParts[1].trim());
-            int hour = 17 + showTimeIndex; // Assuming shows start at 5:00 PM
-            int minute = 0; // Assuming shows start on the hour
+            int hour = 17 + showTimeIndex;
+            int minute = 0;
             return String.format("%02d:%02d", hour, minute);
         } else {
-            return showTimeColumn; // Return as is if not in expected format
+            return showTimeColumn;
         }
     }
 }
