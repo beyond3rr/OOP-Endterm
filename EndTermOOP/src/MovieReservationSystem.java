@@ -38,13 +38,7 @@ abstract class User extends DatabaseEntity {
 
     public abstract void specificMethod();
 
-    public void commonMethod1() {
-        // Common method for all users
-    }
 
-    public void commonMethod2() {
-        // Common method for all users
-    }
 }
 
 class Customer extends User {
@@ -52,14 +46,6 @@ class Customer extends User {
         super(username, password);
     }
 
-    @Override
-    public void specificMethod() {
-        // Customer-specific method
-    }
-
-    public void customerSpecificInit() {
-        // Customer-specific initialization logic for movies
-    }
 }
 
 class Admin extends User {
@@ -67,14 +53,6 @@ class Admin extends User {
         super(username, password);
     }
 
-    @Override
-    public void specificMethod() {
-        // Admin-specific method
-    }
-
-    public void adminSpecificInit() {
-        // Admin-specific initialization logic for movies
-    }
 }
 
 class Movie extends DatabaseEntity {
@@ -88,12 +66,6 @@ class Movie extends DatabaseEntity {
         this.prices = prices;
     }
 
-    public void movieInit() {
-        // Common initialization logic for movies
-    }
-
-    // Add methods or properties for movies
-}
 
 class Reservation extends DatabaseEntity {
     private String username;
